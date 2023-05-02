@@ -1,0 +1,177 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1 1 auto;
+}
+
+.flashcards {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flashcards__learn {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+/* You can add additional styles as needed */
+
+.learn__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.learn__icon {
+  margin-left: .5em;
+}
+
+.learn__icon--left {
+  margin-right: .5em;
+  margin-left: 0;
+}
+
+.learn__link {
+  margin-bottom: .7em;
+  max-width: 7em;
+}
+
+.learn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em 0;
+}
+
+.learn__title {
+  font-size: 2em;
+}
+
+.learn__actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1em;
+}
+
+.learn__slides {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em;
+  font-size: 1.2em;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-ty-primary);
+  border-radius: .5em;
+}
+
+.learn__content,
+.learn__slider {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  border-radius: 1em;
+  font-size: 1.3em;
+  line-height: 1.5;
+  width: 450px;
+  /* maximum size of card */
+  height: 500px;
+  /* maximum size of card */
+  background-color: var(--color-bg-secondary);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  flex: 1 1 auto;
+}
+
+.card__front,
+.card__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card__content {
+  max-height: 100%;
+  overflow: auto;
+}
+
+.card__front {
+  z-index: 2;
+  transform: rotateY(0)
+}
+
+.card__back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.card--flipped {
+  transform: rotateY(180deg)
+}
+
+@media screen and (max-width: 768px) {
+  .learn__heading {
+    margin-bottom: .5em;
+  }
+
+  .learn__title {
+    display: none;
+  }
+
+  .learn__link {
+    margin-bottom: 0;
+  }
+
+  .card {
+    position: relative;
+    width: 440px;
+    height: 640px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .card {
+    position: relative;
+    width: 100%;
+    height: 450px;
+  }
+}
+
+
+@media screen and (max-width: 580px) {
+
+  .card {
+    position: relative;
+    height: 450px;
+  }
+}
