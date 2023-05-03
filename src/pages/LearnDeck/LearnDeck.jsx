@@ -15,6 +15,7 @@ export const LearnDeck = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const deck = useDeck()
+  console.log('deck', deck)
   const { user } = useSelector((state) => state.auth)
   const { cards, isError, isLoading, message } = useSelector((state) => state.card)
   const deckCards = useMemo(() => { return cards.filter(card => deck.cards.includes(card._id)) }, [cards])
