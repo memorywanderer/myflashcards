@@ -18,6 +18,7 @@ const createCard = async (card, token) => {
     }
   }
   const response = await axios.post(API_URL, card, config)
+  console.log("Response of created card", response)
   return response.data
 }
 
