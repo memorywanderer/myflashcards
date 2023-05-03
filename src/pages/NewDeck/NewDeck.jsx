@@ -83,7 +83,9 @@ export const NewDeck = () => {
       }))
 
       let createdCards = []
+      console.log('New deck cardForms', cardForms)
       if (cardForms.length > 0) {
+
         createdCards = await Promise.all(cardForms.map(async (card) => {
           const newCard = await dispatch(createCard({
             term: card.term,
@@ -94,6 +96,7 @@ export const NewDeck = () => {
           return newCard
         }))
       }
+      console.log('New deck created cards', createdCards)
 
       await dispatch(updateCollection({
         id: newDeck.payload._id,
