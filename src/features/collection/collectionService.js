@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'myflashcards-api.up.railway.app/api/collections/'
+const API_URL = 'https://myflashcards-api.up.railway.app/api/collections/'
 
 const getCollections = async (pageNumber, token) => {
   const config = {
