@@ -2,6 +2,7 @@ import { Outlet, useNavigate, useOutletContext, useParams } from "react-router-d
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Spinner } from "./Spinner";
+import { getCollections } from "../features/collection/collectionSlice";
 
 export const DeckLayout = () => {
   const { id } = useParams();
