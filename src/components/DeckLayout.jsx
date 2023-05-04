@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Spinner } from "./Spinner";
 import { getCollections } from "../features/collection/collectionSlice";
+import { toast } from "react-toastify";
 
 export const DeckLayout = () => {
   const { id } = useParams();
