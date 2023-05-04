@@ -10,8 +10,25 @@ import { DeckLayout } from "./components/DeckLayout"
 import { LearnDeck } from './pages/LearnDeck/LearnDeck'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
+import { useState } from "react"
 
 function App() {
+  const [pageNumber, setPageNumber] = useState(1)
+
+  const handlePrevPage = () => {
+    pageNumber > 1 && setPageNumber(pageNumber - 1)
+  }
+
+  const handleNextPage = () => {
+    setPageNumber(pageNumber + 1)
+  }
+  const handleFirstPage = () => {
+    setPageNumber(1)
+  }
+
+  const handleLastPage = (pages) => {
+    setPageNumber(pages)
+  }
   return (
     <>
       <Router>
@@ -22,9 +39,18 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/decks" element={<MyDecks />} />
+              <Route path="/decks" element={
+                <MyDecks
+                  pageNumber={pageNumber}
+                  handlePrevPage={handlePrevPage}
+                  handleNextPage={handleNextPage}
+                  handleFirstPage={handleFirstPage}
+                  handleLastPage={handleLastPage}
+                />
+              }
+              />
               <Route path="/new" element={<NewDeck />} />
-              <Route path="/decks/:id" element={<DeckLayout />}>
+              <Route path="/decks/:id" element={<DeckLayout pageNumber={pageNumber} />}>
                 <Route path="learn" element={<LearnDeck />} />
                 <Route path="edit" element={<EditDeck />} />
               </Route>

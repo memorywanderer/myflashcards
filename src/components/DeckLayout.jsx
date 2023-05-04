@@ -5,7 +5,7 @@ import { Spinner } from "./Spinner";
 import { getCollections } from "../features/collection/collectionSlice";
 import { toast } from "react-toastify";
 
-export const DeckLayout = () => {
+export const DeckLayout = ({ pageNumber }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,8 +19,9 @@ export const DeckLayout = () => {
     if (!user) {
       navigate('/login');
     } else {
-      dispatch(getCollections());
+      dispatch(getCollections(pageNumber));
     }
+
   }, [dispatch, navigate, isError, user]);
 
   if (isLoading) {
@@ -35,6 +36,7 @@ export const DeckLayout = () => {
 const Deck = ({ id }) => {
   const { collections } = useSelector(state => state.collection);
   const deck = collections.find(c => c._id === id);
+  console.log(collections)
 
   if (!deck) {
     return <div>Deck not found</div>;

@@ -10,13 +10,18 @@ import { FaPlus } from "react-icons/fa"
 import './MyDecks.css'
 import { Dropdown } from "../../components/Dropdown/Dropdown"
 
-export const MyDecks = () => {
+export const MyDecks = ({
+  pageNumber,
+  handlePrevPage,
+  handleNextPage,
+  handleFirstPage,
+  handleLastPage
+}) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
   const { collections, hasMore, totalPages, isError, isLoading, message } = useSelector(state => state.collection)
   const [searchValue, setSearchValue] = useState('')
-  const [pageNumber, setPageNumber] = useState(1)
   const [dropdownValue, setDropdownValue] = useState('newest')
 
   const filteredCollections = useMemo(() => {
@@ -38,14 +43,6 @@ export const MyDecks = () => {
       dispatch(getCollections(pageNumber))
     }
   }, [dispatch, navigate, isError, user, pageNumber])
-
-  const handlePrevPage = () => {
-    pageNumber > 1 && setPageNumber(pageNumber - 1)
-  }
-
-  const handleNextPage = () => {
-    setPageNumber(pageNumber + 1)
-  }
 
 
   const handlingSearch = (e) => {
@@ -93,7 +90,7 @@ export const MyDecks = () => {
       <div className="decks__pagination">
         <button
           className="btn"
-          onClick={() => setPageNumber(1)}
+          onClick={handleFirstPage}
           disabled={pageNumber === 1}
         >
           First
@@ -115,7 +112,7 @@ export const MyDecks = () => {
         <button
           className="btn"
           disabled={!hasMore}
-          onClick={() => setPageNumber(totalPages)}
+          onClick={() => handleLastPage(totalPages)}
         >
           Last
         </button>
