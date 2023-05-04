@@ -1,3 +1,8 @@
+import { Outlet, useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { Spinner } from "./Spinner";
+
 export const DeckLayout = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
