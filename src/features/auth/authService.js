@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'https://myflashcards-api.up.railway.app/api/cards/api/users/'
+const API_URL = 'https://myflashcards-api.up.railway.app/api/users/'
 
 const register = async (userData) => {
   const response = await axios.post(API_URL + 'register', userData)
