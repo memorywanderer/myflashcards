@@ -61,6 +61,9 @@ export const Login = () => {
           <FaUser className='login__icon' />Login
         </h1>
         <p className='descr  login__descr'>Please, log in to your account</p>
+        <p className='descr  login__descr'>Для просмотра готовых примеров:</p>
+        <p className='descr  login__descr'>Логин: deni@m.c</p>
+        <p className='descr  login__descr'>Пароль: 1234</p>
       </section>
       <section className="login__content">
         <div className="login__left">
