@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'myflashcards-api.vercel.app/api/cards/'
+const API_URL = 'https://myflashcards-api.vercel.app/api/cards/'
 
 const getCards = async (token) => {
   const config = {
